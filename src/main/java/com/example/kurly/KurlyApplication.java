@@ -8,7 +8,7 @@ public class KurlyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KurlyApplication.class, args);
-		
+		test;
 	}
 
 }
