@@ -10,4 +10,7 @@ public class KurlyApplication {
 		SpringApplication.run(KurlyApplication.class, args);
 	}
 
+
+
+	
 }
