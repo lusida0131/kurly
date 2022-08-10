@@ -49,6 +49,7 @@ public class ApiServiceImpl implements ApiService{
             pvo.setVolume((String) responseObject2.get("volume"));
             pvo.setDeliveryTypeNames(String.valueOf(responseObject2.get("deliveryTypeNames")));
             pvo.setSellerName((String) responseObject2.get("sellerName"));
+            pvo.setStorageTypes(String.valueOf(responseObject2.get("storageTypes")));
 
             apiMapper.apiSave(pvo); // Mapper를 호출해서 DB에 저장
         }

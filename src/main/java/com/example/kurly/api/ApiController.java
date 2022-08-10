@@ -22,7 +22,7 @@ public class ApiController extends IOException {
             String url = "https://www.kurly.com/goods/" + i;
             Document doc = Jsoup.connect(url).get();
             String e1 = doc.getElementById("__NEXT_DATA__").data(); // <script> 안에 있는 내용만 가져오기 위해 작성
-            System.out.println(e1);
+ //           System.out.println(e1);
             apiService.apiSave(e1);
         }
     }

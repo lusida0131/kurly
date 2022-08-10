@@ -13,5 +13,5 @@ public class ApiDTO {
     private String volume;
     private String deliveryTypeNames;
     private String sellerName;
-
+    private String storageTypes;
 }
