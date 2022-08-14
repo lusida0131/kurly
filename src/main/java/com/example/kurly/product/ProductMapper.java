@@ -1,4 +1,10 @@
 package com.example.kurly.product;
 
-public class ProductMapper {
+import java.util.List;
+
+public interface ProductMapper {
+    public List<ProductDTO> selectAll(ProductDTO productDTO);
+    public ProductDTO selectOne(ProductDTO productDTO);
+
+
 }

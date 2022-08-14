@@ -2,6 +2,7 @@ package com.example.kurly.recipe;
 
 import com.example.kurly.buy.BuyDTO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -29,14 +31,21 @@ public class RecipeController {
 
         return "/recipe/list";
     }
+
+    @PostMapping("/delete")
     public String deleteMyRecipe(@ModelAttribute RecipeDTO recipeDTO, HttpSession session){
         // 화면단에서 처리 후 alert 하는게 더 나을듯
-        if(recipeDTO.getRid().equals( session.getId())){ //null대신 쿠키나 세션에 들어있는 아이디
+        if(recipeDTO.getRecipeid().equals( session.getId())){ //null대신 쿠키나 세션에 들어있는 아이디
             recipeService.deleteRecipe(recipeDTO);
             return "/recipe/list";
         }else{
             return "/recipe/list";
         }
+    }
+    @RequestMapping(value = { "/article/{recipeNo}"})
+    public String selectOneList(@ModelAttribute RecipeDTO recipeDTO){
+        recipeService.selectOneRecipe(recipeDTO);
+        return "/article/{recipeNo}";
     }
 
 
