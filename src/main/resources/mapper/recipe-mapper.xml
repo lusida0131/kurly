@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kurly.recipe.RecipeMapper">
+
+    <insert id="insertRecipe">
+        INSERT INTO RECIPE
+            (RNO, RTITLE, RCONTENT, RIMG1, RIMG2, RIMG3, RIMG4, RIMG5)
+        VALUES
+            ((select nvl(max(RNO),0)+1 from product),#{RTITLE},#{RCONTENT},#{RIMG1},#{RIMG2},#{RIMG3},#{RIMG4},#{RIMG5})
+
+    </insert>
+
+    <delete id="deleteRecipe">
+        delete FROM RECIPE
+        WHERE RNO = #{RNO}
+    </delete>
+
+    <select id="selectOneRecipe" resultType="com.example.kurly.recipe.recipeDTO">
+        select * from recipe
+        WHERE RNO = #{RNO}
+    </select>
+
+    <select id="selectAllRecipe" resultType="com.example.kurly.recipe.recipeDTO">
+        select * from recipe
+    </select>
+
+
+</mapper>

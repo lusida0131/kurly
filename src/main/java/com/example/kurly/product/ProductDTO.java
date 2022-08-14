@@ -1,6 +1,6 @@
 package com.example.kurly.product;
 
-public class ProductModel {
+public class ProductDTO {
     private String no; //pk(상품 코드)
     private String name; //상품
     private int basePrice; //가격
