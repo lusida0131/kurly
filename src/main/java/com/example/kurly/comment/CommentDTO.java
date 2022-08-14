@@ -1,6 +1,6 @@
-package com.example.kurly.product;
+package com.example.kurly.comment;
 
-public class CommentModel {
+public class CommentDTO {
     private int comNo; // 댓글 번호
     private int recipeNo; // 레시피 번호
     private String name; // 작성자

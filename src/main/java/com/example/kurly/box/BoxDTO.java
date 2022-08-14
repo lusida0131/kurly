@@ -1,6 +1,6 @@
-package com.example.kurly.product;
+package com.example.kurly.box;
 
-public class BoxModel {
+public class BoxDTO {
     private String boxNo;
     private int width;
     private int vertical;

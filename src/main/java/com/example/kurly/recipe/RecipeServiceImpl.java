@@ -1,6 +1,6 @@
 package com.example.kurly.recipe;
 
-import com.example.kurly.product.BuyDTO;
+import com.example.kurly.buy.BuyDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

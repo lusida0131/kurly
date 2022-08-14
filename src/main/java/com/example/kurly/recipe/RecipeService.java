@@ -1,8 +1,6 @@
 package com.example.kurly.recipe;
 
-import com.example.kurly.member.MemberDTO;
-import com.example.kurly.product.BuyDTO;
-import com.example.kurly.product.ProductDTO;
+import com.example.kurly.buy.BuyDTO;
 
 import java.util.List;
 
