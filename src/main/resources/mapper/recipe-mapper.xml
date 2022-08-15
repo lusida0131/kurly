@@ -4,13 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.kurly.recipe.RecipeMapper">
-
-    <insert id="insertRecipe">
+    <insert id="insertRecipe" useGeneratedKeys="true">
+        <selectKey keyProperty="RNO" resultType="int" order="BEFORE">
+            SELECT IFNULL(MAX(bno), 0 ) + 1 FROM basket
+        </selectKey>
         INSERT INTO RECIPE
             (RNO, RTITLE, RCONTENT, RIMG1, RIMG2, RIMG3, RIMG4, RIMG5)
         VALUES
-            ((select nvl(max(RNO),0)+1 from product),#{RTITLE},#{RCONTENT},#{RIMG1},#{RIMG2},#{RIMG3},#{RIMG4},#{RIMG5})
-
+            (#{RNO},#{RTITLE},#{RCONTENT},#{RIMG1},#{RIMG2},#{RIMG3},#{RIMG4},#{RIMG5})
     </insert>
 
     <delete id="deleteRecipe">
@@ -18,12 +19,12 @@
         WHERE RNO = #{RNO}
     </delete>
 
-    <select id="selectOneRecipe" resultType="com.example.kurly.recipe.recipeDTO">
+    <select id="selectOneRecipe" resultType="com.example.kurly.recipe.RecipeDTO">
         select * from recipe
         WHERE RNO = #{RNO}
     </select>
 
-    <select id="selectAllRecipe" resultType="com.example.kurly.recipe.recipeDTO">
+    <select id="selectAllRecipe" resultType="com.example.kurly.recipe.RecipeDTO">
         select * from recipe
     </select>
 

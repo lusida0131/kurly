@@ -3,6 +3,6 @@ package com.example.kurly.basket;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public class BasketMapper {
-
+public interface BasketMapper {
+    public void register(BasketDTO basket);
 }

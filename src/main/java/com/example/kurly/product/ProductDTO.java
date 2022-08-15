@@ -1,5 +1,8 @@
 package com.example.kurly.product;
 
+import lombok.Data;
+
+@Data
 public class ProductDTO {
     private String no; //pk(상품 코드)
     private String name; //상품

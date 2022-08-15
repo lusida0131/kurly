@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class BasketDTO {
-    private String memberid;
-    private String productNo;
+    private int bno;
+    private String memberid;   // 맴버 아이디
+    private String productno;  // 상품 코드
 
 }

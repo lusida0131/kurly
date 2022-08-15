@@ -4,7 +4,6 @@ import com.example.kurly.KurlyApplication;
 import com.example.kurly.member.MemberDTO;
 import com.example.kurly.member.MemberMapper;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

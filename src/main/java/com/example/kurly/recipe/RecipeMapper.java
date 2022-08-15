@@ -1,9 +1,11 @@
 package com.example.kurly.recipe;
 
 import com.example.kurly.buy.BuyDTO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface RecipeMapper {
     // 레시피 등록
     public void insertRecipe(RecipeDTO recipeDTO, BuyDTO buyDTO);
