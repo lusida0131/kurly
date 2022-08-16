@@ -1,23 +1,21 @@
 package com.example.kurly.basket;
 
 import com.example.kurly.product.ProductDTO;
-import com.example.kurly.product.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("basket")
+@Slf4j
 // basket CURD
 public class BasketController {
-
-    private final ProductService productService;
 
     private final BasketService basketService;
 
@@ -28,24 +26,26 @@ public class BasketController {
         basket.setMemberid(session.getId());
         basket.setProductno(product.getNo());
         basketService.register(basket);
-        return "/basket/";
+        return "/basket/list";
     }
     // 장바구니 목록리스트
-    @PostMapping("/list")
-    public String basketList() {
-        return "list";
+    @GetMapping("/list")
+    public void basketList(@ModelAttribute BasketDTO basket, Model model) {
+        List<BasketDTO> list = basketService.list(basket);
+        model.addAttribute("list", list);
+        log.info("list={}", list);
     }
 
     // 장바구니 삭제
-//    @PostMapping("/delete")
-//    public String delete(@ModelAttribute BasketDTO basket, HttpSession session) {
-//        if(basket.getMemberid().equals(session.getId())) {
-//            basketService.delete();
-//            return "/basket/list";
-//        }
-//        else {
-//            return "/basket/list";
-//        }
-//    }
+    @GetMapping("/delete")
+    public String delete(@RequestParam int bno, HttpSession session, BasketDTO basket) {
+        if(basket.getMemberid().equals(session.getId())) {
+            basketService.delete(bno);
+            return "/basket/list";
+        }
+        else {
+            return "/basket/list";
+        }
+    }
 
 }

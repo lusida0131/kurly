@@ -10,7 +10,10 @@
         insert into basket (bno, memberid, productno)
         values (#{bno}, #{memberid}, #{productno})
     </insert>
-    <select id="">
-
+    <select id="list" resultType="map">
+        select a.*, c.name, c.basePrice from basket a, member b, product c where a.memberid = b.id and c.no = a.productno
     </select>
+    <delete id="delete" parameterType="int">
+        delete from basket where bno = #{bno}
+    </delete>
 </mapper>
